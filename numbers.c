@@ -80,6 +80,11 @@ void run_operations(List *list)
     status = add_to_end(list, value);
     break;
 
+  case 'b':
+    value = read_input_value();
+    status = add_to_start(list, value);
+    break;
+
   case 'l':
     display(list);
     break;
