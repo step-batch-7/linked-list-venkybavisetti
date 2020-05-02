@@ -1,5 +1,6 @@
 #ifndef __LIST_H
 #define __LIST_H
+#define clrscr() printf("\e[1;1H\e[2J")
 
 typedef enum
 {
