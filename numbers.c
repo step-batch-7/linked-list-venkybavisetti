@@ -79,6 +79,10 @@ void run_operations(List *list)
     value = read_input_value();
     status = add_to_end(list, value);
     break;
+
+  case 'l':
+    display(list);
+    break;
   }
 
   print_status(status);

@@ -41,3 +41,13 @@ Status add_to_end(List_ptr list, int value)
 
   return Success;
 }
+
+void display(List_ptr list)
+{
+  Node_ptr p_walk = list->head;
+  for (int index = 0; index < list->count; index++)
+  {
+    printf("%d ", p_walk->value);
+    p_walk = p_walk->next;
+  }
+}
