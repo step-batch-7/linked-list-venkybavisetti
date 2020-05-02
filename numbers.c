@@ -2,7 +2,8 @@
 #include "list.h"
 
 #define clrscr() printf("\e[1;1H\e[2J")
-#define DONE printf("Done\n")
+#define DONE printf("Done\n\n")
+#define FAIL printf("Fail\n\n")
 
 void print_menu_bar(void)
 {
@@ -48,10 +49,23 @@ int read_input_value(void)
   return value;
 }
 
+void print_status(Status status)
+{
+  clrscr();
+  if (status)
+  {
+    DONE;
+    return;
+  }
+  FAIL;
+}
+
 void run_operations(List *list)
 {
   int value;
   char operation;
+  Status status = Failure;
+
   print_menu_bar();
   operation = read_operation_code();
 
@@ -63,9 +77,11 @@ void run_operations(List *list)
 
   case 'a':
     value = read_input_value();
-    add_to_end(list, value);
+    status = add_to_end(list, value);
     break;
   }
+
+  print_status(status);
   run_operations(list);
 }
 
