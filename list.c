@@ -83,3 +83,30 @@ Status insert_at(List_ptr list, int value, int position)
   }
   return Failure;
 }
+
+Status add_unique(List_ptr list, int value)
+{
+  Node_ptr p_walk = list->head;
+  for (int index = 0; index < list->count; index++)
+  {
+    if (p_walk->value == value)
+      return Failure;
+    p_walk = p_walk->next;
+  }
+
+  Node_ptr new_node = create_node(value);
+
+  if (list->head == NULL)
+  {
+    list->head = new_node;
+  }
+  else
+  {
+    list->last->next = new_node;
+  }
+
+  list->last = new_node;
+  list->count++;
+
+  return Success;
+}

@@ -95,6 +95,11 @@ void run_operations(List *list)
     position = read_input_value();
     status = insert_at(list, value, position);
     break;
+
+  case 'd':
+    value = read_input_value();
+    status = add_unique(list, value);
+    break;
   }
 
   print_status(status);
