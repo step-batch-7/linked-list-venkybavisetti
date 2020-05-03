@@ -4,7 +4,7 @@
 
 List_ptr create_list(void)
 {
-  List *list = malloc(sizeof(List));
+  List_ptr list = malloc(sizeof(List));
 
   list->head = NULL;
   list->last = NULL;
@@ -177,4 +177,18 @@ Status remove_first_occurrence(List_ptr list, int value)
     p_walk = p_walk->next;
   }
   return Failure;
+}
+
+Status remove_all_occurrences(List_ptr list, int value)
+{
+  Status status = remove_first_occurrence(list, value);
+  if (status == Failure)
+  {
+    return Failure;
+  }
+  while (status == Success)
+  {
+    status = remove_first_occurrence(list, value);
+  }
+  return Success;
 }

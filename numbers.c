@@ -5,7 +5,7 @@
 
 void print_menu_bar(void)
 {
-  printf("Main Menu\n");
+  printf("\n\nMain Menu\n");
   printf("---------\n");
   printf("(a) add a number to the end of the list\n");
   printf("(b) add a number to the start of the list\n");
@@ -127,6 +127,11 @@ void run_operations(List *list)
   case 'h':
     value = read_input_value();
     status = remove_first_occurrence(list, value);
+    break;
+
+  case 'i':
+    value = read_input_value();
+    status = remove_all_occurrences(list, value);
     break;
   }
 
