@@ -100,7 +100,7 @@ void run_operations(List *list)
 
   case 'c':
     value = read_input_value();
-    printf("For Possition\n");
+    printf("For Position\n");
     position = read_input_value();
     status = insert_at(list, value, position);
     break;
@@ -116,6 +116,12 @@ void run_operations(List *list)
 
   case 'f':
     status = remove_from_end(list);
+    break;
+
+  case 'g':
+    printf("For Position\n");
+    position = read_input_value();
+    status = remove_at(list, position);
     break;
   }
 
