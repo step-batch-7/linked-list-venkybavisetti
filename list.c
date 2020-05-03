@@ -45,7 +45,7 @@ Status add_to_end(List_ptr list, int value)
 void display(List_ptr list)
 {
   Node_ptr p_walk = list->head;
-  for (int index = 0; index < list->count; index++)
+  while (p_walk != NULL)
   {
     printf("%d ", p_walk->value);
     p_walk = p_walk->next;
@@ -87,7 +87,7 @@ Status insert_at(List_ptr list, int value, int position)
 Status add_unique(List_ptr list, int value)
 {
   Node_ptr p_walk = list->head;
-  for (int index = 0; index < list->count; index++)
+  while (p_walk != NULL)
   {
     if (p_walk->value == value)
       return Failure;
@@ -107,6 +107,18 @@ Status add_unique(List_ptr list, int value)
 
   list->last = new_node;
   list->count++;
+
+  return Success;
+}
+
+Status remove_from_start(List_ptr list)
+{
+  if (list->count == 0)
+    return Failure;
+
+  Node_ptr element_to_free = list->head;
+  list->head = list->head->next;
+  free(element_to_free);
 
   return Success;
 }

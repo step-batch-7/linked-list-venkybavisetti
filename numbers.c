@@ -100,6 +100,10 @@ void run_operations(List *list)
     value = read_input_value();
     status = add_unique(list, value);
     break;
+
+  case 'e':
+    status = remove_from_start(list);
+    break;
   }
 
   print_status(status);
