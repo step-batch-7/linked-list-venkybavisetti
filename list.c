@@ -62,3 +62,24 @@ Status add_to_start(List_ptr list, int value)
 
   return Success;
 }
+
+Status insert_at(List_ptr list, int value, int position)
+{
+  Node_ptr prev = NULL;
+  Node_ptr new_node = create_node(value);
+
+  Node_ptr p_walk = list->head;
+  for (int index = 0; index < list->count; index++)
+  {
+    if (index == position)
+    {
+      prev->next = new_node;
+      new_node->next = p_walk;
+      list->count++;
+      return Success;
+    }
+    prev = p_walk;
+    p_walk = p_walk->next;
+  }
+  return Failure;
+}

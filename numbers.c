@@ -62,7 +62,7 @@ void print_status(Status status)
 
 void run_operations(List *list)
 {
-  int value;
+  int value, position;
   char operation;
   Status status = Failure;
 
@@ -75,6 +75,10 @@ void run_operations(List *list)
     return;
     break;
 
+  case 'l':
+    display(list);
+    break;
+
   case 'a':
     value = read_input_value();
     status = add_to_end(list, value);
@@ -85,8 +89,11 @@ void run_operations(List *list)
     status = add_to_start(list, value);
     break;
 
-  case 'l':
-    display(list);
+  case 'c':
+    value = read_input_value();
+    printf("For Possition\n");
+    position = read_input_value();
+    status = insert_at(list, value, position);
     break;
   }
 
