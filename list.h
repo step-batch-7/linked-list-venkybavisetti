@@ -50,4 +50,6 @@ Status clear_list(List_ptr); // Removes all elements in the list
 
 void destroy_list(List_ptr); // Frees the elements and the list structure from memory
 
+Status search_number(List_ptr, int value);
+
 #endif

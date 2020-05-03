@@ -209,3 +209,18 @@ void destroy_list(List_ptr list)
   clear_list(list);
   free(list);
 }
+
+Status search_number(List_ptr list, int value)
+{
+  Status status = Failure;
+  Node_ptr p_walk = list->head;
+  for (int index = 0; index < list->count; index++)
+  {
+    if (p_walk->value == value)
+    {
+      status = Success;
+    }
+    p_walk = p_walk->next;
+  }
+  return status;
+}

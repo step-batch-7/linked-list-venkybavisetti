@@ -139,6 +139,11 @@ void run_operations(List *list)
   case 'j':
     status = clear_list(list);
     break;
+
+  case 'k':
+    value = read_input_value();
+    status = search_number(list, value);
+    break;
   }
 
   print_status(status);
