@@ -106,3 +106,18 @@ Status remove_from_start(List_ptr list)
 
   return Success;
 }
+
+Status remove_from_end(List_ptr list)
+{
+  Node_ptr p_walk = list->head;
+  Node_ptr element_to_free = list->head;
+  for (int i = list->count; i > 0; i--)
+  {
+    if (i == 1)
+    {
+      p_walk->next = NULL;
+      list->last = p_walk;
+    }
+    p_walk = p_walk->next;
+  }
+}

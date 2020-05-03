@@ -113,7 +113,12 @@ void run_operations(List *list)
   case 'e':
     status = remove_from_start(list);
     break;
+
+  case 'f':
+    status = remove_from_end(list);
+    break;
   }
+
   print_status(status);
   display(list);
   run_operations(list);
