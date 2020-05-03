@@ -102,6 +102,7 @@ Status remove_from_start(List_ptr list)
 
   Node_ptr element_to_free = list->head;
   list->head = list->head->next;
+  list->count--;
   free(element_to_free);
 
   return Success;
@@ -109,15 +110,29 @@ Status remove_from_start(List_ptr list)
 
 Status remove_from_end(List_ptr list)
 {
-  Node_ptr p_walk = list->head;
-  Node_ptr element_to_free = list->head;
-  for (int i = list->count; i > 0; i--)
+  Status status = Failure;
+  Node_ptr element_to_free = list->last;
+  if (list->count == 1)
   {
-    if (i == 1)
+    element_to_free = list->head;
+    list->head = NULL;
+    list->last = NULL;
+    list->count--;
+    free(element_to_free);
+    return Success;
+  }
+  Node_ptr p_walk = list->head;
+  for (int i = list->count; i > 1; i--)
+  {
+    if (i == 2)
     {
+      status = Success;
       p_walk->next = NULL;
       list->last = p_walk;
+      list->count--;
+      free(element_to_free);
     }
     p_walk = p_walk->next;
   }
+  return status;
 }
