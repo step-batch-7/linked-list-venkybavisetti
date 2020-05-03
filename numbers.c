@@ -123,6 +123,11 @@ void run_operations(List *list)
     position = read_input_value();
     status = remove_at(list, position);
     break;
+
+  case 'h':
+    value = read_input_value();
+    status = remove_first_occurrence(list, value);
+    break;
   }
 
   print_status(status);
