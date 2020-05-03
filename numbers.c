@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "list.h"
 
-#define clrscr() printf("\e[1;1H\e[2J")
+#define clrscr() system("clear")
 
 void print_menu_bar(void)
 {
@@ -132,6 +133,10 @@ void run_operations(List *list)
   case 'i':
     value = read_input_value();
     status = remove_all_occurrences(list, value);
+    break;
+
+  case 'j':
+    status = clear_list(list);
     break;
   }
 

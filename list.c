@@ -192,3 +192,14 @@ Status remove_all_occurrences(List_ptr list, int value)
   }
   return Success;
 }
+
+Status clear_list(List_ptr list)
+{
+  Status status = Failure;
+  while (list->count > 0)
+  {
+    status = remove_from_end(list);
+  }
+
+  return status;
+}
