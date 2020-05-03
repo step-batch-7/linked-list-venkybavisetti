@@ -2,8 +2,6 @@
 #include "list.h"
 
 #define clrscr() printf("\e[1;1H\e[2J")
-#define DONE printf("Done\n\n")
-#define FAIL printf("Fail\n\n")
 
 void print_menu_bar(void)
 {
@@ -23,6 +21,16 @@ void print_menu_bar(void)
   printf("(l) display the list of numbers\n");
   printf("(m) exit\n\n");
   printf("Please enter the alphabet of the operation you would like to perform\n\n");
+}
+
+void display_done()
+{
+  printf("Done\n");
+}
+
+void display_fail()
+{
+  printf("Failed\n");
 }
 
 void clear_buffer()
@@ -54,10 +62,10 @@ void print_status(Status status)
   clrscr();
   if (status)
   {
-    DONE;
+    display_done();
     return;
   }
-  FAIL;
+  display_fail();
 }
 
 void run_operations(List *list)
@@ -77,6 +85,7 @@ void run_operations(List *list)
 
   case 'l':
     display(list);
+    status = Success;
     break;
 
   case 'a':
@@ -105,8 +114,8 @@ void run_operations(List *list)
     status = remove_from_start(list);
     break;
   }
-
   print_status(status);
+  display(list);
   run_operations(list);
 }
 
