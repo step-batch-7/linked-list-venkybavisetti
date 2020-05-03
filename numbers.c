@@ -81,6 +81,7 @@ void run_operations(List *list)
   switch (operation)
   {
   case 'm':
+    destroy_list(list);
     return;
     break;
 
