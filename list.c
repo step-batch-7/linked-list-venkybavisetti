@@ -67,7 +67,7 @@ Status insert_at(List_ptr list, int value, int position)
   if (position == 0)
     return add_to_start(list, value);
 
-  if (position > list->count)
+  if (position > list->count || position < 0)
     return Failure;
 
   if (position == list->count)
@@ -90,7 +90,7 @@ Status insert_at(List_ptr list, int value, int position)
 
 Status add_unique(List_ptr list, int value)
 {
-  if (list->last->value == value)
+  if (!search_number(list, value))
     return Failure;
   return add_to_end(list, value);
 }
@@ -142,7 +142,7 @@ Status remove_at(List_ptr list, int position)
   if (position == 0)
     return remove_from_start(list);
 
-  if (position >= list->count)
+  if (position >= list->count || position < 0)
     return Failure;
 
   if (position == (list->count) - 1)
