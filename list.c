@@ -90,7 +90,7 @@ Status insert_at(List_ptr list, int value, int position)
 
 Status add_unique(List_ptr list, int value)
 {
-  if (!search_number(list, value))
+  if (search_number(list, value))
     return Failure;
   return add_to_end(list, value);
 }
